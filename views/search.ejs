@@ -5,14 +5,21 @@
 
         <input type="submit" value="Search by Song">
     </form>
-    <% if(data) { %>
-        <% for (let i in data) { %>
+    <% if(req.query) { %>
+        <% for (let i in songs) { %>
             <h1>SONG:
-                <%= data[i].name; %>
+                <%= songs[i].name; %>
             </h1>
-            <h2>ALBUM:
-                <%= data[i].album.name; %>
+            <h2>ARTIST:
+                <%= songs[i].artist; %>
             </h2>
+            <h3>ALBUM:
+                <%= songs[i].album; %>
+            </h3>
+            MINI PLAYER:
+            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songId.replace(/[" ]+/g, '' ) %>"
+                width="300"
+                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             <% } %>
                 <% } %>
 </div>

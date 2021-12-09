@@ -43,22 +43,22 @@ router.get('/', function (req, res) {
             // make another axios (GET) to get the data 
             axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=3`, config)
                 .then(response => {
-                    // const artistIterate = function (array) {    // lists all artists in artist array
-                    //     let artistArray = [];
-                    //     array.forEach(artist => {
-                    //         artistArray.push(artist.name);
-                    //     })
-                    //     return artistArray;
-                    // }
-                    const albums = response.data.tracks.items;
-                    for (const k of albums) {
-                        const artists = k.artists.map(artist => artist.name);
-                        console.log(artists);
+                    let items = response.data.tracks.items; // array of songs data
+                    let songArray = []; // array of obj containing songs data
+
+                    for (const item of items) {
+                        let song = {};
+                        const songName = item.name;
+                        const artists = item.artists.map(artist => artist.name);
+                        const albumName = item.album.name;
+                        const songId = item.id;   // for embedded player
+                        song.name = songName;
+                        song.artist = artists;
+                        song.album = albumName;
+                        song.songId = songId;
+                        songArray.push(song);
                     }
-
-
-                    let songArray = response.data.tracks.items;
-                    res.render('search', { data: songArray });
+                    res.render('search', { songs: songArray });
                 })
                 .catch(err => {
                     console.log('ERROR', err);
