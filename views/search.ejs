@@ -1,0 +1,27 @@
+<div>
+    <form action="/search" method="GET">
+        <label for="song">Song</label>
+        <input id="song" type="text" name="song" required>
+
+        <input type="submit" value="Search by Song">
+    </form>
+    <% if(data) { %>
+        <% for (let i in data) { %>
+            <h1>SONG:
+                <%= data[i].name; %>
+            </h1>
+            <h2>ALBUM:
+                <%= data[i].album.name; %>
+            </h2>
+            <% } %>
+                <% } %>
+</div>
+<!-- <hr>
+<div>
+    <form action="/album" method="POST">
+        <label for="album">Album</label>
+        <input id="album" type="text" name="album" required>
+
+        <input type="submit" value="Search by Album">
+    </form> -->
+</div>

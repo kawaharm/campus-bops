@@ -10,6 +10,15 @@ const isLoggedIn = require('./middleware/isLoggedIn');
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 
+// Code for Spotify API
+const axios = require('axios');
+const querystring = require('querystring');
+let buff = new Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
+let authKey = buff.toString('base64');
+let headers = {
+  Authorization: `Basic ${authKey}`
+}
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -35,17 +44,24 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('homepage');
 })
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
+  const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
 
-// controllers
+// CONTROLLERS
 app.use('/auth', require('./controllers/auth'));
+app.use('/categories', require('./controllers/categories'));
+app.use('/schools', require('./controllers/schools'));
+app.use('/search', require('./controllers/search'));
+
+
+
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
