@@ -78,7 +78,9 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
     console.log('SUBMITTED FORM', req.body);
     Category.create({
-        name: req.body.name
+        name: req.body.name,
+        schoolid: req.body.schoolid,
+        userid: req.body.userid
     })
         .then(function (newCategory) {
             console.log('NEW CATEGORY', newCategory.toJSON());
@@ -98,7 +100,9 @@ router.post('/', function (req, res) {
 router.put('/:id', function (req, res) {
     let categoryIndex = Number(req.params.id);
     Category.update({
-        name: req.params.name
+        name: req.params.name,
+        schoolid: req.body.schoolid,
+        userid: req.body.userid
     }, { where: { id: categoryIndex } })
         .then(function (response) {
             console.log('AFTER UPDATE', response);

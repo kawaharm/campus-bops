@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.Category.belongsToMany(models.Song, { through: 'CategorySong' });
-      models.Category.belongsTo(models.School, { foreignKey: 'schoolId' });
-      models.Category.belongsTo(models.User, { foreignKey: 'userId' });
+      models.Category.belongsTo(models.School, { foreignKey: 'schoolid' });
+      models.Category.belongsTo(models.User, { foreignKey: 'userid' });
     }
   };
   Category.init({
@@ -24,10 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    schoolId: {
+    schoolid: {
       type: DataTypes.INTEGER,
     },
-    userId: {
+    userid: {
       type: DataTypes.INTEGER,
     }
   }, {

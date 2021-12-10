@@ -5,7 +5,7 @@
 
         <input type="submit" value="Search by Song">
     </form>
-    <% if(req.query) { %>
+    <% //if(req.query) { %>
         <% for (let i in songs) { %>
             <h1>SONG:
                 <%= songs[i].name; %>
@@ -17,10 +17,10 @@
                 <%= songs[i].album; %>
             </h3>
             MINI PLAYER:
-            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songId.replace(/[" ]+/g, '' ) %>"
+            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songid.replace(/[" ]+/g, '' ) %>"
                 width="300"
                 height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            <% } %>
+            <% //} %>
                 <% } %>
 </div>
 <!-- <hr>

@@ -51,11 +51,11 @@ router.get('/', function (req, res) {
                         const songName = item.name;
                         const artists = item.artists.map(artist => artist.name);
                         const albumName = item.album.name;
-                        const songId = item.id;   // for embedded player
+                        const songid = item.id;   // for embedded player
                         song.name = songName;
                         song.artist = artists;
                         song.album = albumName;
-                        song.songId = songId;
+                        song.songid = songid;
                         songArray.push(song);
                     }
                     res.render('search', { songs: songArray });

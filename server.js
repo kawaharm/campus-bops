@@ -49,6 +49,7 @@ app.get('/', (req, res) => {
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
+  console.log('WHAT IS THIS?', req.user.get());
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
