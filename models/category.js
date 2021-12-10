@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.Category.belongsToMany(models.Song, { through: 'CategorySong' });
-      models.Category.belongsToMany(models.School, { through: 'SchoolCategory' });
+      models.Category.belongsTo(models.School, { foreignKey: 'schoolId' });
+      models.Category.belongsTo(models.User, { foreignKey: 'userId' });
     }
   };
   Category.init({
@@ -22,6 +23,12 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Category must not be empty'
         }
       }
+    },
+    schoolId: {
+      type: DataTypes.INTEGER,
+    },
+    userId: {
+      type: DataTypes.INTEGER,
     }
   }, {
     sequelize,

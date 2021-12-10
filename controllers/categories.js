@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { Category } = require('../models');
+const {
+    Category,
+    School
+} = require('../models');
+const school = require('../models/school');
 
 /**
  * ============================
