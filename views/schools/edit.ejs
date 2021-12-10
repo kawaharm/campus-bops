@@ -1,0 +1,17 @@
+<form method="POST" action="/schools/<%= school.id %>/?_method=PUT">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%= school.name %>">
+
+    <label for="location">Location</label>
+    <input type="text" name="location" value="<%= school.location %>">
+
+    <label for="logo">Logo</label>
+    <input type="text" name="logo" value="<%= school.logo %>">
+    <img src="" alt="">
+
+    <label for="abbv">Abbrev</label>
+    <input type="text" name="abbv" value="<%= school.abbv %>">
+    <img src="" alt="">
+
+    <input type="submit">
+</form>

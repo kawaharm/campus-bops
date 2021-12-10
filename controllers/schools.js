@@ -24,21 +24,20 @@ router.get('/', function (req, res) {
 });
 
 router.get('/new', function (req, res) {
-    res.render('categories/new');
+    res.render('schools/new');
 });
 
-// GET to Edit Category
-router.get('/edit/:id', function (req, res) {
-    let categoryIndex = Number(req.params.id);
-    Category.findByPk(categoryIndex)
-        .then(function (category) {
-            if (category) {
-                category = category.toJSON();
-                res.render('categories/edit', { category });
+// GET to Edit School
+router.get('/edit/:abbv', function (req, res) {
+    School.findOne({ where: { abbv: req.params.abbv } })
+        .then(function (school) {
+            if (school) {
+                school = school.toJSON();
+                res.render('schools/edit', { school });
             } else {
-                console.log('This category does not exist. Send to 404 page.');
+                console.log('This school does not exist. Send to 404 page.');
                 // render a 404 page
-                res.render('404', { message: 'This category does not exist' });
+                res.render('404', { message: 'This school does not exist' });
             }
         })
         .catch(function (error) {
@@ -46,18 +45,17 @@ router.get('/edit/:id', function (req, res) {
         });
 })
 
-// GET by index
-router.get('/:id', function (req, res) {
-    let categoryIndex = Number(req.params.id);
-    Category.findByPk(categoryIndex)
-        .then(function (category) {
-            if (category) {
-                category = category.toJSON();
-                res.render('categories/show', { category });
+// GET by school name
+router.get('/:abbv', function (req, res) {
+    School.findOne({ where: { abbv: req.params.abbv } })
+        .then(function (school) {
+            if (school) {
+                school = school.toJSON();
+                res.render('schools/show', { school });
             } else {
-                console.log('This category does not exist');
+                console.log('This school does not exist');
                 // render a 404 page
-                res.render('404', { message: 'This category does not exist' });
+                res.render('404', { message: 'This school does not exist' });
             }
         })
         .catch(function (error) {
@@ -69,20 +67,23 @@ router.get('/:id', function (req, res) {
  * POST ROUTES
  * */
 
-// CREATE new category
+// CREATE new school
 router.post('/', function (req, res) {
     console.log('SUBMITTED FORM', req.body);
-    Category.create({
-        name: req.body.name
+    School.create({
+        name: req.body.name,
+        location: req.body.location,
+        logo: req.body.logo,
+        abbv: req.body.abbv
     })
-        .then(function (newCategory) {
-            console.log('NEW CATEGORY', newCategory.toJSON());
-            newCategory = newCategory.toJSON();
-            res.redirect(`/categories/${newCategory.id}`);
+        .then(function (newSchool) {
+            console.log('NEW SCHOOL', newSchool.toJSON());
+            newSchool = newSchool.toJSON();
+            res.redirect(`/schools/${newSchool.id}`);
         })
         .catch(function (error) {
             console.log('ERROR', error);
-            res.render('404', { message: 'Category was not added please try again...' });
+            res.render('404', { message: 'School was not added please try again...' });
         });
 });
 
@@ -91,13 +92,16 @@ router.post('/', function (req, res) {
  * */
 
 router.put('/:id', function (req, res) {
-    let categoryIndex = Number(req.params.id);
-    Category.update({
-        name: req.params.name
-    }, { where: { id: categoryIndex } })
+    let schoolIndex = Number(req.params.id);
+    School.update({
+        name: req.body.name,
+        location: req.body.location,
+        logo: req.body.logo,
+        abbv: req.body.abbv
+    }, { where: { id: schoolIndex } })
         .then(function (response) {
             console.log('AFTER UPDATE', response);
-            res.redirect(`/categories/${categoryIndex}`);
+            res.redirect(`/schools/${schoolIndex}`);
         })
         .catch(function (error) {
             console.log('ERROR', error);
@@ -110,15 +114,15 @@ router.put('/:id', function (req, res) {
  * */
 
 router.delete('/:id', function (req, res) {
-    let categoryIndex = Number(req.params.id);
-    Category.destroy({ where: { id: categoryIndex } })
+    let schoolIndex = Number(req.params.id);
+    School.destroy({ where: { id: schoolIndex } })
         .then(function (response) {
-            console.log('CATEGORY DELETED', response);
-            res.redirect('/categories');
+            console.log('SCHOOL DELETED', response);
+            res.redirect('/schools');
         })
         .catch(function (error) {
             console.log('ERROR', error);
-            res.render('404', { message: 'Category was not deleted, please try again...' });
+            res.render('404', { message: 'School was not deleted, please try again...' });
         })
 });
 
