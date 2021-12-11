@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   School.init({
     name: DataTypes.STRING,
     location: DataTypes.STRING,
-    logo: DataTypes.STRING
+    logo: DataTypes.STRING,
+    abbv: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'School',

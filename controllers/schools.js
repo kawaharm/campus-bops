@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { School } = require('../models');
+const {
+    School,
+    Category
+} = require('../models');
 /**
  * ============================
  * Schools
@@ -45,13 +48,18 @@ router.get('/edit/:abbv', function (req, res) {
         });
 })
 
-// GET by school name
+// GET School by abbreviation
 router.get('/:abbv', function (req, res) {
     School.findOne({ where: { abbv: req.params.abbv } })
         .then(function (school) {
             if (school) {
-                school = school.toJSON();
-                res.render('schools/show', { school });
+                school.getCategories()  // Show all categories associated with school
+                    .then(function (categories) {
+                        res.render('schools/show', { school, categories });
+                    })
+                    .catch(function (err) {
+                        console.log('ERROR with CATEGORIES', err);
+                    })
             } else {
                 console.log('This school does not exist');
                 // render a 404 page
