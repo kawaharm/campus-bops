@@ -59,6 +59,7 @@ app.use('/auth', require('./controllers/auth'));
 app.use('/categories', require('./controllers/categories'));
 app.use('/schools', require('./controllers/schools'));
 app.use('/search', require('./controllers/search'));
+app.use('/songs', require('./controllers/songs'));
 
 
 

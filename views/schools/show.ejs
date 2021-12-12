@@ -9,13 +9,18 @@
 </head>
 
 <body>
+    <h1>
+        <%= school.name %>
+    </h1>
     <% for( let i in categories ) { %>
         <% let category=categories[i]; %>
             <% category=category.toJSON(); %>
                 <p>
                     <%= category.name %>
                 </p>
-                <a href="/categories/edit/<%= category.id %>">Edit</a>
+                <form method="POST" action="/categories/<%= category.id %>/?_method=DELETE">
+                    <input type="submit" value="Delete Category">
+                </form>
                 <hr>
                 <% } %>
 

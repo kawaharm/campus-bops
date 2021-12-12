@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <% for( let i in songs ) { %>
+        <% console.log('THESE ARE THE SONGS',songs); %>
+            <% let song=songs[i]; %>
+                <% song=song.toJSON() %>
+                    <p>
+                        <%= song.name %>
+                    </p>
+                    <a href="/songs/<%= song.abbv %>">View Song</a>
+                    <hr>
+                    <% } %>
+
+
+
+                        <!-- <form method="POST" action="/categories/<%= //category.id %>/?_method=DELETE">
+        <input type="submit" value="Delete Category">
+    </form> -->
+</body>
+
+</html>

@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {
     Category,
-    School
+    School,
+    CategorySong
 } = require('../models');
 const school = require('../models/school');
 
@@ -57,18 +58,36 @@ router.get('/:id', function (req, res) {
     Category.findByPk(categoryIndex)
         .then(function (category) {
             if (category) {
-                category = category.toJSON();
-                res.render('categories/show', { category });
+                category.getSongs()
+                    .then(function (songs) {
+                        if (songs) {
+                            console.log('SONGS EXIST', songs);
+                            songs.forEach(function (song) {
+                                console.log('SONG IN CATEGORY:', song.name)
+                            })
+                            category = category.toJSON();
+                            res.render('categories/show', { category, songs });
+                        } else {
+                            console.log('Songs do not exist in this category');
+                            // render a 404 page
+                            res.render('404', { message: 'Songs do not exist in this category' });
+                        }
+                    })
+                    .catch(function (err) {
+                        console.log('ERROR', err)
+                    })
             } else {
                 console.log('This category does not exist');
                 // render a 404 page
                 res.render('404', { message: 'This category does not exist' });
             }
         })
-        .catch(function (error) {
-            console.log('ERROR', error);
+        .catch(function (err) {
+            console.log('ERROR', err);
         });
 });
+
+
 
 /**
  * POST ROUTES
@@ -130,5 +149,6 @@ router.delete('/:id', function (req, res) {
             res.render('404', { message: 'Category was not deleted, please try again...' });
         })
 });
+
 
 module.exports = router;

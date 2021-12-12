@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.Song.belongsToMany(models.Category, { through: 'CategorySong' })
+      models.Song.belongsTo(models.Category, { foreignKey: 'categoryid' })
     }
   };
   Song.init({
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     artist: DataTypes.STRING,
     album: DataTypes.STRING,
     albumCover: DataTypes.STRING,
-
+    categoryid: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Song',

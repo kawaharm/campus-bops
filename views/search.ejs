@@ -7,28 +7,23 @@
     </form>
     <% //if(req.query) { %>
         <% for (let i in songs) { %>
-            <h1>SONG:
-                <%= songs[i].name; %>
-            </h1>
-            <h2>ARTIST:
-                <%= songs[i].artist; %>
-            </h2>
-            <h3>ALBUM:
-                <%= songs[i].album; %>
-            </h3>
-            MINI PLAYER:
-            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songid.replace(/[" ]+/g, '' ) %>"
-                width="300"
-                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            <% //} %>
-                <% } %>
-</div>
-<!-- <hr>
-<div>
-    <form action="/album" method="POST">
-        <label for="album">Album</label>
-        <input id="album" type="text" name="album" required>
-
-        <input type="submit" value="Search by Album">
-    </form> -->
+            <form method="POST" action="/songs/new">
+                <h1>SONG:
+                    <%= songs[i].name; %>
+                </h1>
+                <h2>ARTIST:
+                    <%= songs[i].artist; %>
+                </h2>
+                <h3>ALBUM:
+                    <%= songs[i].album; %>
+                </h3>
+                <h4>MINI PLAYER:
+                    <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songid.replace(/[" ]+/g, '' ) %>"
+                        width="300"
+                        height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </h4>
+                <% //} %>
+                    <input id="songs" type="submit" value="Add to Category">
+            </form>
+            <% } %>
 </div>

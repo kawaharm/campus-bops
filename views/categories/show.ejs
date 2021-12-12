@@ -13,11 +13,26 @@
     <h1>
         <%= category.name %>
     </h1>
-    <a href="/categories/edit/<%= category.id %>">Edit</a>
+    <% for(let i in songs) { %>
+        <% let song=songs[i]; %>
+            <% song=song.toJSON(); %>
+                <h2>
+                    <%= song.title %>
+                </h2>
+                <h2>
+                    <%= song.artist %>
+                </h2>
+                <h2>
+                    <%= song.album %>
+                </h2>
+                <hr>
+                <% } %>
 
-    <form method="POST" action="/categories/<%= category.id %>/?_method=DELETE">
-        <input type="submit" value="Delete Category">
-    </form>
+                    <a href="/categories/edit/<%= category.id %>">Edit</a>
+
+                    <form method="POST" action="/categories/<%= category.id %>/?_method=DELETE">
+                        <input type="submit" value="Delete Category">
+                    </form>
 </body>
 
 </html>
