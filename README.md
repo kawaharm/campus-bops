@@ -1,27 +1,13 @@
-# `Express Authentication`
+# Campus Bops`
 
-Express authentication template using Passport + Flash messages + custom middleware
+## Introduction
 
-## What it includes
+Campus Bops is an online platform for college students to discover what songs are going viral around campus. Each school has a tier list of songs based on categories such as "Pregame Anthem", "After A Bad Breakup", and "Guilty Pleasure". By creating an account, students can search songs, using Spotify's API, and cast their votes on what songs should belong in each category. Each week, the songs in each category are placed in a NCAA tournament-style bracket. At the end of each day, the songs with the most votes moves onto the next round until one song remains and is crowned most worthy of its respective category. Its a fun and interactive place for students to discover new music and see if their chosen song can attain the top ranks of college campus hits.   
 
-* Sequelize user model / migration
-* Settings for PostgreSQL
-* Passport and passport-local for authentication
-* Sessions to keep user logged in between pages
-* Flash messages for errors and successes
-* Passwords that are hashed with BCrypt
-* EJS Templating and EJS Layouts
+### Wireframe and ERD's
+<img width="625" alt="Screen Shot 2021-12-12 at 7 55 57 PM" src="https://user-images.githubusercontent.com/92088326/145750021-cf8f2d68-6990-4c4b-9570-021bbc4715e7.png">
 
-### User Model
 
-| Column Name | Data Type | Notes |
-| --------------- | ------------- | ------------------------------ |
-| id | Integer | Serial Primary Key, Auto-generated |
-| name | String | Must be provided |
-| email | String | Must be unique / used for login |
-| password | String | Stored as a hash |
-| createdAt | Date | Auto-generated |
-| updatedAt | Date | Auto-generated |
 
 ### Default Routes
 
