@@ -6,13 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Campus Bops</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css-1/style.css">
 </head>
 
 <body>
     <div class='title'>
         <h1>Welcome to Campus Bops!</h1>
-        <h3>Please login or sign-up to get started.</h3>
+    </div>
+    <div class="container">
+        <form method="GET" action="/schools/<%= schools.abbv %>">
+            <label for="schools">Please select a school:</label>
+            <select id="schools" name="schools">
+                <% for( let index=0; index < schools.length; index++ ) { %>
+                    <% let school=schools[index]; %>
+                        <option value="<%= school.abbv %>">
+                            <%= school.name %>
+                        </option>
+                        <% } %>
+            </select>
+            <input type="submit" value="Let's Go!">
+        </form>
+
     </div>
     <script src="../server.js"></script>
 </body>

@@ -1,9 +1,13 @@
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
+body {
+  background: blue;
 }
 
-h1 {
-  color: chartreuse;
+.title {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+  background: gray;
+
 }

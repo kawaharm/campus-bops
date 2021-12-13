@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const { School } = require('./models');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
@@ -44,12 +45,18 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('homepage');
+  School.findAll()
+    .then(function (schoolList) {
+      res.render('homepage', { schools: schoolList })
+    })
+    .catch(function (err) {
+      console.log('ERROR', err);
+      res.json({ message: 'Error occured, please try again....' });
+    });
 })
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
-  console.log('WHAT IS THIS?', req.user.get());
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
@@ -60,7 +67,6 @@ app.use('/categories', require('./controllers/categories'));
 app.use('/schools', require('./controllers/schools'));
 app.use('/search', require('./controllers/search'));
 app.use('/songs', require('./controllers/songs'));
-
 
 
 

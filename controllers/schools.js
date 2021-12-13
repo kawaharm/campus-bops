@@ -18,7 +18,6 @@ const {
 router.get('/', function (req, res) {
     School.findAll()
         .then(function (schoolList) {
-            console.log('FOUND ALL SCHOOLS', schoolList);
             res.render('schools/index', { schools: schoolList })
         })
         .catch(function (err) {
@@ -51,6 +50,7 @@ router.get('/edit/:abbv', function (req, res) {
 
 // GET School by abbreviation
 router.get('/:abbv', function (req, res) {
+    console.log('does abbv come out?', req.params.abbv);
     School.findOne({ where: { abbv: req.params.abbv } })
         .then(function (school) {
             if (school) {
@@ -71,7 +71,6 @@ router.get('/:abbv', function (req, res) {
             console.log('ERROR', error);
         });
 });
-
 /**
  * POST ROUTES
  * */
