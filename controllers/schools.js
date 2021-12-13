@@ -100,6 +100,7 @@ router.post('/', function (req, res) {
  * */
 
 router.put('/:id', function (req, res) {
+    let schoolIndex = Number(req.params.id);
     School.update({
         name: req.body.name,
         location: req.body.location,
@@ -108,7 +109,7 @@ router.put('/:id', function (req, res) {
     }, { where: { id: schoolIndex } })
         .then(function (response) {
             console.log('AFTER UPDATE', response);
-            res.redirect(`/schools/${response.id}`);
+            res.redirect(`/schools/${response.abbv}`);
         })
         .catch(function (error) {
             console.log('ERROR', error);

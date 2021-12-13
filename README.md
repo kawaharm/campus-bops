@@ -8,17 +8,39 @@ Campus Bops is an online platform for college students to discover what songs ar
 <img width="625" alt="wireframe" src="./img/campus-bops-wireframe.png">
 <img width="625" alt="erd" src="./img/campus-bops-erd.png">
 
-### Default Routes
+### RESTful Routes
 
 | Method | Path | Location | Purpose |
 | ------ | ---------------- | -------------- | ------------------- |
-| GET | / | server.js | Home page |
+| GET | / | server.js | Homepage |
+| GET | /profile | server.js | User profile |
 | GET | /auth/login | auth.js | Login form |
 | GET | /auth/signup | auth.js | Signup form |
 | POST | /auth/login | auth.js | Login user |
 | POST | /auth/signup | auth.js | Creates User |
 | GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
+| GET | /categories | category.js | View All Categories |
+| GET | /categories/new | category.js | Create Category |
+| GET | /categories/edit/:id | category.js | Edit Category |
+| GET | /categories/:id | category.js | View Category by id |
+| POST | /categories | category.js | Create Category |
+| PUT | /categories/:id | category.js | Edit Category by id |
+| DELETE | /categories/:id | category.js | Delete Category by id |
+| GET | /schools | school.js | View All Schools |
+| GET | /schools/new | school.js | Add School |
+| GET | /schools/edit/:abbv | school.js | Edit School by abbreviation |
+| GET | /schools/:abbv | school.js | View School by abbreviation |
+| POST | /schools/ | school.js | Add School |
+| PUT | /schools/:id | school.js | Edit School by id |
+| DELETE | /:id | school.js | Remove School |
+| GET | /songs/search | school.js | Search Song using Spotify API |
+| GET | /songs/new | school.js | Add Song |
+| GET | /songs/edit/:id | school.js | Edit Song info by id |
+| GET | /songs/:id | school.js | View Song by id |
+| POST | /songs/new | school.js | Add Song |
+| PUT | /songs/:id | school.js | Edit Song by id |
+| DELETE | /songs/:id | school.js | Remove Song |
+
 
 ## `1` Fork & Clone Project & Install Dependencies
 `1` The first thing that we are going to do is `fork` and `clone`
