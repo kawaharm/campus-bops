@@ -19,19 +19,43 @@ body {
 
 /* --- SCHOOLS --- */
 
+.schoolListContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;  
+  justify-content: center;
+  padding: 50px;
+  gap: 10px 10px;
+  margin: 10px 10px; 
+}
+
+.schoolListItem {
+  margin: 20px;
+  border: 2px solid #144ac8;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 .schoolContainer {
-    display: flex;
-    height: 200px;
-    flex-flow: row wrap;
-    align-content: center;  
-    justify-content: center;
-    border: 2px solid black;
-    padding: 50px;
-    gap: 10px 10px; 
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;  
+  justify-content: center;
+  padding: 50px;
+  gap: 10px 10px;
+  margin: 10px 10px; 
+}
+
+.schoolName {
+  text-align: center;
+  margin: 20px;
 }
 
 .schoolItem {
-    height: 50px;
-    width: 50px;
-    margin: auto;
+  margin: 20px;
+  border: 2px solid #144ac8;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }

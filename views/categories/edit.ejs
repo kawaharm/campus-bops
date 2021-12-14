@@ -22,13 +22,15 @@
     <h3>ALBUM:
         <%= songs[i].album; %>
     </h3>
-    <h4>MINI PLAYER:
-        <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
-            width="300"
-            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </h4>
-    <!-- Delete Song from Category -->
-    <form method="POST" action="/songs/<%= songs[i].id %>/?_method=DELETE">
-        <input type="submit" value="Remove Song from Category">
-    </form>
-    <% } %>
+    <% if(songs[i].songPlayerId) { %>
+        <h4>MINI PLAYER:
+            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
+                width="300"
+                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </h4>
+        <% } %>
+            <!-- Delete Song from Category -->
+            <form method="POST" action="/songs/<%= songs[i].id %>/?_method=DELETE">
+                <input type="submit" value="Remove Song from Category">
+            </form>
+            <% } %>

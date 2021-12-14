@@ -1,0 +1,44 @@
+body {
+    background: white;
+  }
+  
+  .navbar {
+    background: #144ac8;
+  }
+  
+  .navbar-item {
+    color: ghostwhite;
+    border: 1px solid rgb(195, 221, 227);
+    border-radius: 5px;
+    padding: 2px 20px;
+    margin: 2px;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;  /* To remove underline */
+  }
+
+/* --- CATEGORIES --- */
+
+.categoryNew {
+  text-align: center;
+  margin: 10px;
+}
+
+.categoryContainer {
+    display: flex;
+    height: 200px;
+    flex-flow: row wrap;
+    align-content: center;  
+    justify-content: center;
+    padding: 50px;
+    gap: 10px 50px; 
+}
+
+.categoryItem {
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid #144ac8;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}

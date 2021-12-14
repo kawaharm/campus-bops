@@ -66,7 +66,21 @@ app.get('/profile', isLoggedIn, (req, res) => {
   Category.findAll(
     { where: { userid: id } })
     .then(function (categories) {
-      res.render('profile', { id, name, email, categories });
+      if (categories) {
+        // categories.getSongs()
+        //   .then(function (songs) {
+        //     res.render('profile', { id, name, email, categories, songs });
+        //   })
+        res.render('profile', { id, name, email, categories });
+      }
+      else {
+        // console.log('Songs do not exist in this category');
+        // // render a 404 page
+        // res.render('404', { message: 'Songs do not exist in this category' });
+        console.log('Categories do not exist in this profile');
+        // render a 404 page
+        res.render('404', { message: 'Categories do not exist in this profile' });
+      }
     })
     .catch(function (err) {
       console.log('ERROR', err);

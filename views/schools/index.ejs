@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <div class="schoolContainer">
+    <div class="schoolListContainer">
         <% for( let i in schools ) { %>
             <% let school=schools[i]; %>
                 <% school=school.toJSON() %>
-                    <div class="schoolItem">
+                    <div class="schoolListItem">
                         <h3>
                             <a href="/schools/<%= school.abbv %>">
                                 <%= school.name %>

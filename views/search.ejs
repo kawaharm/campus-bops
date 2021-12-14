@@ -1,36 +1,47 @@
-<div>
-    <!-- Search Bar -->
-    <form action="/search" method="GET">
-        <label for="song">Song</label>
-        <input id="song" type="text" name="song" required>
+<!DOCTYPE html>
+<html lang="en">
 
-        <input type="submit" value="Search by Song">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Campus Bops</title>
+    <link rel="stylesheet" href="../css-1/song.css">
+</head>
+
+<body>
+
+    <!-- Search Bar -->
+    <form class="search" action="/search" method="GET" autocomplete="off">
+        <label class="searchLabel" for="song">Song</label>
+        <input class="searchBar" id="song" type="text" name="song" required>
+        <input class="searchSubmit" type="submit" value="Search by Song">
     </form>
 
     <!-- List song results from Spotify   -->
     <% for (let i in songs) { %>
-        <form method="POST" action="/songs/new">
+        <form class="songResult" method="POST" action="/categories/newSong">
             <h1>SONG:
                 <%= songs[i].title; %>
             </h1>
-            <h2>ARTIST:
+            <h3>ARTIST:
                 <%= songs[i].artist; %>
-            </h2>
+            </h3>
             <h3>ALBUM:
                 <%= songs[i].album; %>
             </h3>
-            <h4>MINI PLAYER:
-                <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
-                    width="300"
-                    height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-            </h4>
+            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
+                width="300"
+                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
             <!-- ** Sends song info to ROUTES as hidden ** -->
             <input type="text" name="title" value="<%= songs[i].title %>" hidden />
             <input type="text" name="artist" value="<%= songs[i].artist %>" hidden />
             <input type="text" name="album" value="<%= songs[i].album %>" hidden />
             <input type="text" name="songPlayerId" value="<%= songs[i].songPlayerId %>" hidden />
-            <input type="submit" value="Add To Category">
+            <input class="addToCategoryBtn" type="submit" value="Add To Category">
         </form>
         <% } %>
-</div>
+</body>
+
+</html>

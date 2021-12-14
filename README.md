@@ -112,8 +112,8 @@ router.get('/', function (req, res) {
 });
 ```
 
-###  2. Adding Songs from Spotify to Category
-The `search.ejs` template below is for the user to search a song, show the first 5 results, and enable them to add to their category. An embedded player is included so the user can preview each song as well. When a user clicks "Add to Category", a POST request is made and sends the song data to the Category controller.    
+###  2. Adding Songs from Spotify to a Category
+The `search.ejs` template below is for the user to search a song, show the first 5 results, and enable them to add to their category. An embedded player is included so the user can preview each song as well. When a user clicks "Add to Category", a POST request is made and sends the song data to the Song controller where it will be assigned a category, thanks to its many-to-one association.     
 
 ```html
 <div>

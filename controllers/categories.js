@@ -5,7 +5,6 @@ const {
     School,
     CategorySong
 } = require('../models');
-const school = require('../models/school');
 
 /**
  * ============================
@@ -66,10 +65,6 @@ router.get('/:id', function (req, res) {
                 category.getSongs()
                     .then(function (songs) {
                         if (songs) {
-                            console.log('SONGS EXIST', songs);
-                            songs.forEach(function (song) {
-                                console.log('SONG IN CATEGORY:', song.name)
-                            })
                             category = category.toJSON();
                             res.render('categories/show', { category, songs });
                         } else {
@@ -91,8 +86,6 @@ router.get('/:id', function (req, res) {
             console.log('ERROR', err);
         });
 });
-
-
 
 /**
  * POST ROUTES
@@ -116,6 +109,21 @@ router.post('/', function (req, res) {
             res.render('404', { message: 'Category was not added please try again...' });
         });
 });
+
+// ADD new song to exist Category
+router.post('/newSong', function (req, res) {
+    console.log('SUBMITTED FORM', req.body);
+})
+//         .then(function (newCategory) {
+//             console.log('NEW CATEGORY', newCategory.toJSON());
+//             newCategory = newCategory.toJSON();
+//             res.redirect(`/categories/${newCategory.id}`);
+//         })
+//         .catch(function (error) {
+//             console.log('ERROR', error);
+//             res.render('404', { message: 'Category was not added please try again...' });
+//         });
+// });
 
 /**
  * EDIT

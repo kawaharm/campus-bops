@@ -5,74 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css-1/style.css">
+    <link rel="stylesheet" href="../css-1/school.css">
     <title></title>
 </head>
 
 <body>
-    <h1>
-        <%= school.name %>
-    </h1>
-    <% for( let i in categories ) { %>
-        <% let category=categories[i]; %>
-            <% category=category.toJSON(); %>
-                <p>
-                    <%= category.name %>
-                </p>
-                <form method="POST" action="/categories/<%= category.id %>/?_method=PUT">
-                    <input type="submit" value="Edit Category">
-                </form>
-                <form method="POST" action="/categories/<%= category.id %>/?_method=DELETE">
-                    <input type="submit" value="Delete Category">
-                </form>
-                <hr>
-                <% } %>
-
-                    <h2>HTML Table</h2>
-
-                    <table>
-                        <tr>
-                            <th>Company</th>
-                            <th>Contact</th>
-                            <th>Country</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Maria Anders</td>
-                            <td>Germany</td>
-                        </tr>
-                        <tr>
-                            <td>Centro comercial Moctezuma</td>
-                            <td>Francisco Chang</td>
-                            <td>Mexico</td>
-                        </tr>
-                        <tr>
-                            <td>Ernst Handel</td>
-                            <td>Roland Mendel</td>
-                            <td>Austria</td>
-                        </tr>
-                        <tr>
-                            <td>Island Trading</td>
-                            <td>Helen Bennett</td>
-                            <td>UK</td>
-                        </tr>
-                        <tr>
-                            <td>Laughing Bacchus Winecellars</td>
-                            <td>Yoshi Tannamuri</td>
-                            <td>Canada</td>
-                        </tr>
-                        <tr>
-                            <td>Magazzini Alimentari Riuniti</td>
-                            <td>Giovanni Rovelli</td>
-                            <td>Italy</td>
-                        </tr>
-                    </table>
-
-
-
-                    <!-- <form method="POST" action="/categories/<%= //category.id %>/?_method=DELETE">
-        <input type="submit" value="Delete Category">
-    </form> -->
+    <div class="schoolName">
+        <h1>
+            <%= school.name %>
+        </h1>
+    </div>
+    <div class="schoolContainer">
+        <% for( let i in categories ) { %>
+            <% let category=categories[i]; %>
+                <% category=category.toJSON(); %>
+                    <div class="schoolItem">
+                        <h3>
+                            <%= category.name %>
+                        </h3>
+                        <form method="POST" action="/categories/<%= category.id %>/?_method=PUT">
+                            <input type="submit" value="Edit Category">
+                        </form>
+                        <form method="POST" action="/categories/<%= category.id %>/?_method=DELETE">
+                            <input type="submit" value="Delete Category">
+                        </form>
+                    </div>
+                    <% } %>
+    </div>
 </body>
 
 </html>

@@ -34,30 +34,30 @@ router.get('/', function (req, res) {
                     Authorization: `Bearer ${token}`
                 }
             }
-            // let artist = 'Pop Smoke'
+
+            // Define song variable using value from song search bar
             let track = req.query.song;
 
-            // let query = encodeURIComponent(`${artist} ${track}`);
-            // console.log(query); // => Pop Smoke%20Welcome To The Party
-
-            // make another axios (GET) to get the data 
-            axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=3`, config)
+            // Make another axios (GET) to retrieve song data 
+            axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=5`, config)
                 .then(response => {
-                    let items = response.data.tracks.items; // array of songs data
-                    let songArray = []; // array of obj containing songs data
+                    let items = response.data.tracks.items; // Array of songs data
+                    let songArray = []; // Array of obj containing songs data
 
+                    // Encapsulate each song data into an object and push into songArray
                     for (const item of items) {
                         let song = {};
                         const songTitle = item.name;
-                        const artists = item.artists.map(artist => artist.name);
+                        const artists = item.artists.map(artist => artist.name);    // Map artist array to obtain all artists in song 
                         const albumName = item.album.name;
-                        const songPlayerId = item.id;   // for embedded player
+                        const songPlayerId = item.id;   // For embedded player
                         song.title = songTitle;
                         song.artist = artists;
                         song.album = albumName;
                         song.songPlayerId = songPlayerId;
                         songArray.push(song);
                     }
+                    // Render songs into search.ejs file
                     res.render('search', { songs: songArray });
                 })
                 .catch(err => {
@@ -66,7 +66,7 @@ router.get('/', function (req, res) {
 
         })
         .catch(function (err) {
-            console.log("error", err.message)
+            console.log("ERROR", err.message)
         })
 });
 

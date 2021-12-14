@@ -1,0 +1,47 @@
+body {
+    background: white;
+  }
+  
+  .navbar {
+    background: #144ac8;
+  }
+  
+  .navbar-item {
+    color: ghostwhite;
+    border: 1px solid rgb(195, 221, 227);
+    border-radius: 5px;
+    padding: 2px 20px;
+    margin: 2px;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;  /* To remove underline */
+  }
+  
+  /* --- SONG --- */
+
+  .search {
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    border: 2px solid white;
+    padding: 10px;
+    margin: 40px 60px;
+  }
+  
+  .searchBar {
+    margin: 10px;
+  }
+  
+  .searchLabel {
+    margin: 5px;
+  }
+  
+  .searchSubmit {
+    margin: 5px;
+  }
+
+.songResult {
+    margin: 10px 20px;
+}
+  
+  

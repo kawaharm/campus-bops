@@ -6,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Categories</title>
+    <link rel="stylesheet" href="../css-1/category.css">
+
 </head>
 
 <body>
-    <% for( let index=0; index < categories.length; index++ ) { %>
-        <% let c=categories[index]; %>
-            <% c=c.toJSON(); %>
-                <!-- List every playlist name -->
-                <p>
-                    <%= c.name %>
-                </p>
-                <% } %>
+    <div class="categoryNew">
+        <form method="GET" action="/categories/new">
+            <input type="submit" value="Add New Category">
+        </form>
+    </div>
+    <div class="categoryContainer">
+        <% for( let index=0; index < categories.length; index++ ) { %>
+            <% let c=categories[index]; %>
+                <% c=c.toJSON(); %>
+                    <div class="categoryItem">
+                        <h3>
+                            <%= c.name %>
+                        </h3>
+                    </div>
+                    <% } %>
+    </div>
+
 </body>
 
 </html>

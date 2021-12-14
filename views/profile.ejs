@@ -1,32 +1,61 @@
-<h2>Profile Page</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<h3>Welcome to your PROFILE</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    <link rel="stylesheet" href="../css-1/category.css">
+</head>
 
-<p>Id: <%= id %>
-</p>
-<p>Name: <%= name %>
-</p>
-<p>Email: <%= email %>
-</p>
+<body>
+    <h2>Profile Page</h2>
 
-<h3>YOUR CATEGORIES</h3>
+    <h3>Welcome to your PROFILE</h3>
 
-<% for( let i in categories ) { %>
-    <% let category=categories[i]; %>
-        <% category=category.toJSON(); %>
-            <h4>
-                <%= category.name %>
-            </h4>
-            <table>
-                <tr>
-                    <th>Song</th>
-                    <th>Artist</th>
-                    <th>Media Player</th>
-                </tr>
-                <tr>
-                    <td>
-                        <%= %>
-                    </td>
-                </tr>
-            </table>
-            <% } %>
+    <p>Id: <%= id %>
+    </p>
+    <p>Name: <%= name %>
+    </p>
+    <p>Email: <%= email %>
+    </p>
+
+    <h3>YOUR CATEGORIES</h3>
+    <div class="categoryContainer">
+        <% for( let i in categories ) { %>
+            <% let category=categories[i]; %>
+                <% category=category.toJSON(); %>
+                    <div class="categoryItem">
+                        <h4>
+                            <%= category.name %>
+                        </h4>
+                        <% //for(let i in songs) { %>
+                            <% //et song=songs[i]; %>
+                                <% //ong=song.toJSON(); %>
+                                    <table>
+                                        <tr>
+                                            <th>Song</th>
+                                            <th>Artist</th>
+                                            <th>Media Player</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <%= //song.title %>
+                                            </td>
+                                            <td>
+                                                <%= //song.artist %>
+                                            </td>
+                                            <td>
+                                                <%= //song.album %>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <% //} %>
+                    </div>
+                    <% } %>
+    </div>
+
+</body>
+
+</html>

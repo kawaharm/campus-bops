@@ -17,17 +17,17 @@
         </div>
     </div>
     <div class="container">
-        <form class="schoolSearch" method="POST" action="/schools/">
+        <form class="schoolSearch" method="POST" action="/schools/search">
             <label id="schoolSearchLabel" for="schools">Select a School:</label>
-            <select id="schoolSearchMenu" name="schools">
+            <select id="schoolSearchMenu" name="schoolAbbv">
                 <% for( let index=0; index < schools.length; index++ ) { %>
                     <% let school=schools[index]; %>
                         <option value="<%= school.abbv %>">
                             <%= school.name %>
                         </option>
                         <% } %>
+                            <input id="schoolSubmitButton" type="submit" value="Let's Go!">
             </select>
-            <input id="schoolSubmitButton" type="submit" value="Let's Go!">
         </form>
     </div>
     <script src="../server.js"></script>

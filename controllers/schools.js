@@ -95,6 +95,20 @@ router.post('/', function (req, res) {
         });
 });
 
+// Search for school from homepage
+router.post('/search', function (req, res) {
+    console.log('SUBMITTED FORM', req.body);
+    School.findOne({ where: { abbv: req.body.schoolAbbv } })
+        .then(function (foundSchool) {
+            console.log('FOUND SCHOOL', foundSchool.toJSON());
+            res.redirect(`/schools/${foundSchool.abbv}`);
+        })
+        .catch(function (error) {
+            console.log('ERROR: SCHOOL WAS NOT FOUND', error);
+            res.render('404', { message: 'School was not found. please try again...' });
+        });
+})
+
 /**
  * EDIT
  * */
