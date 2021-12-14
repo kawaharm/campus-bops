@@ -5,25 +5,30 @@
 
         <input type="submit" value="Search by Song">
     </form>
-    <% //if(req.query) { %>
-        <% for (let i in songs) { %>
-            <form method="POST" action="/songs/new">
-                <h1>SONG:
-                    <%= songs[i].name; %>
-                </h1>
-                <h2>ARTIST:
-                    <%= songs[i].artist; %>
-                </h2>
-                <h3>ALBUM:
-                    <%= songs[i].album; %>
-                </h3>
-                <h4>MINI PLAYER:
-                    <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songid.replace(/[" ]+/g, '' ) %>"
-                        width="300"
-                        height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                </h4>
-                <% //} %>
-                    <input id="songs" type="submit" value="Add to Category">
-            </form>
-            <% } %>
+
+    <% for (let i in songs) { %>
+        <form method="POST" action="/songs/new">
+            <h1>SONG:
+                <%= songs[i].title; %>
+            </h1>
+            <h2>ARTIST:
+                <%= songs[i].artist; %>
+            </h2>
+            <h3>ALBUM:
+                <%= songs[i].album; %>
+            </h3>
+            <h4>MINI PLAYER:
+                <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
+                    width="300"
+                    height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </h4>
+
+            <!-- ** Sends song info to ROUTES as hidden ** -->
+            <input type="text" name="title" value="<%= songs[i].title %>" hidden />
+            <input type="text" name="artist" value="<%= songs[i].artist %>" hidden />
+            <input type="text" name="album" value="<%= songs[i].album %>" hidden />
+            <input type="text" name="songPlayerId" value="<%= songs[i].songPlayerId %>" hidden />
+            <input type="submit" value="Add To Category">
+        </form>
+        <% } %>
 </div>

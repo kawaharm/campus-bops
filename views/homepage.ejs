@@ -10,13 +10,16 @@
 </head>
 
 <body>
-    <div class='title'>
-        <h1>Welcome to Campus Bops!</h1>
+    <!-- MAIN -->
+    <div class="title-image">
+        <div class="title-text">
+            <h1>Welcome to Campus Bops!</h1>
+        </div>
     </div>
     <div class="container">
-        <form method="GET" action="/schools/<%= schools.abbv %>">
-            <label for="schools">Please select a school:</label>
-            <select id="schools" name="schools">
+        <form class="schoolSearch" method="POST" action="/schools/">
+            <label id="schoolSearchLabel" for="schools">Select a School:</label>
+            <select id="schoolSearchMenu" name="schools">
                 <% for( let index=0; index < schools.length; index++ ) { %>
                     <% let school=schools[index]; %>
                         <option value="<%= school.abbv %>">
@@ -24,9 +27,8 @@
                         </option>
                         <% } %>
             </select>
-            <input type="submit" value="Let's Go!">
+            <input id="schoolSubmitButton" type="submit" value="Let's Go!">
         </form>
-
     </div>
     <script src="../server.js"></script>
 </body>

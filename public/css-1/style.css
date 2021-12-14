@@ -1,13 +1,77 @@
 body {
-  background: blue;
+  background: white;
 }
 
-.title {
-  display: flex;
+.navbar {
+  background: #144ac8;
+}
+
+.navbar-item {
+  color: ghostwhite;
+  border: 1px solid rgb(195, 221, 227);
+  border-radius: 5px;
+  padding: 2px 20px;
+  margin: 2px;
+  font-family: Helvetica;
+  font-size: 20px;
+  text-decoration: none;  /* To remove underline */
+}
+
+/* --- HOMEPAGE --- */
+.title-image {
+  background-image: url("../img/college-map.png");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: auto; /* Resize the background image to cover the entire container */
+  height: 610px;
+}
+
+.title-text {
   text-align: center;
+  font-family: Impact;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: blue;
+  border: 2px solid black;
+  padding: 5px;
+  background: #DFF5FD;
+}
+
+.schoolSearch {
+  display: flex;
+  align-items: center;  
   justify-content: center;
-  flex-direction: column;
-  height: 500px;
-  background: gray;
+  border: 2px solid white;
+  padding: 10px;
+  margin: 80px 0px;
+}
+
+#schoolSearchLabel {
+  margin: 5px;
+}
+
+#schoolSearchMenu {
+  margin: 5px;
+}
+
+#schoolSubmitButton {
+  margin: 5px;
+}
+
+/* --- SCHOOLS --- */
+
+.schoolContainer {
+
+}
+
+.schoolItem {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 80px 0px; 
 
 }

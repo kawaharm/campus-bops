@@ -48,14 +48,14 @@ router.get('/', function (req, res) {
 
                     for (const item of items) {
                         let song = {};
-                        const songName = item.name;
+                        const songTitle = item.name;
                         const artists = item.artists.map(artist => artist.name);
                         const albumName = item.album.name;
-                        const songid = item.id;   // for embedded player
-                        song.name = songName;
+                        const songPlayerId = item.id;   // for embedded player
+                        song.title = songTitle;
                         song.artist = artists;
                         song.album = albumName;
-                        song.songid = songid;
+                        song.songPlayerId = songPlayerId;
                         songArray.push(song);
                     }
                     res.render('search', { songs: songArray });

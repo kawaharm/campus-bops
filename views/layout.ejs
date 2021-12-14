@@ -13,18 +13,47 @@
 <body>
   <%- include('partials/alerts') %>
 
-    <% if (!currentUser) { %>
-      <li><a href="/auth/signup">Signup</a></li>
-      <li><a href="/auth/login">Login</a></li>
-      <% } else { %>
-        <li><a href="/auth/logout">Logout</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <% } %>
+    <!-- START NAV -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
 
-          <%- body %>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-              integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-              crossorigin="anonymous"></script>
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+            <a class="navbar-item" href="/categories">
+              Categories
+            </a>
+            <a class="navbar-item" href="/schools">
+              Schools
+            </a>
+            <a class="navbar-item" href="/search">
+              Song Search
+            </a>
+            <% if (!currentUser) { %>
+              <a class="navbar-item" href="/auth/signup">Signup</a>
+              <a class="navbar-item" href="/auth/login">Login</a>
+              <% } else { %>
+                <a class="navbar-item" href="/profile">Profile</a>
+                <a class="navbar-item" href="/auth/logout">Logout</a>
+                <% } %>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- END NAV -->
+    <%- body %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -5,25 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Schools</title>
+    <link rel="stylesheet" href="../css-1/school.css">
 </head>
 
 <body>
-    <% for( let i in schools ) { %>
-        <% let school=schools[i]; %>
-            <% school=school.toJSON() %>
-                <p>
-                    <%= school.name %>
-                </p>
-                <a href="/schools/<%= school.abbv %>">View School</a>
-                <hr>
-                <% } %>
+    <div class="schoolContainer">
+        <% for( let i in schools ) { %>
+            <% let school=schools[i]; %>
+                <% school=school.toJSON() %>
+                    <div class="schoolItem">
+                        <h3>
+                            <a href="/schools/<%= school.abbv %>">
+                                <%= school.name %>
+                            </a>
+                        </h3>
+                    </div>
+                    <% } %>
+    </div>
 
-
-
-                    <!-- <form method="POST" action="/categories/<%= //category.id %>/?_method=DELETE">
-        <input type="submit" value="Delete Category">
-    </form> -->
+    <script src="/server.js"></script>
 </body>
 
 </html>

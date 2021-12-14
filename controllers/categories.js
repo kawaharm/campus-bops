@@ -39,8 +39,13 @@ router.get('/edit/:id', function (req, res) {
     Category.findByPk(categoryIndex)
         .then(function (category) {
             if (category) {
-                category = category.toJSON();
-                res.render('categories/edit', { category });
+                category.getSongs()
+                    .then(function (songs) {
+                        res.render('categories/edit', { category, songs });
+                    })
+                    .catch(function (err) {
+                        console.log('ERROR', err);
+                    })
             } else {
                 console.log('This category does not exist. Send to 404 page.');
                 // render a 404 page

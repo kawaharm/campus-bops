@@ -1,0 +1,37 @@
+body {
+    background: white;
+  }
+  
+  .navbar {
+    background: #144ac8;
+  }
+  
+  .navbar-item {
+    color: ghostwhite;
+    border: 1px solid rgb(195, 221, 227);
+    border-radius: 5px;
+    padding: 2px 20px;
+    margin: 2px;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-decoration: none;  /* To remove underline */
+  }
+
+/* --- SCHOOLS --- */
+
+.schoolContainer {
+    display: flex;
+    height: 200px;
+    flex-flow: row wrap;
+    align-content: center;  
+    justify-content: center;
+    border: 2px solid black;
+    padding: 50px;
+    gap: 10px 10px; 
+}
+
+.schoolItem {
+    height: 50px;
+    width: 50px;
+    margin: auto;
+}
