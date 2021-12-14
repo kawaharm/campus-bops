@@ -1,4 +1,5 @@
 <div>
+    <!-- Search Bar -->
     <form action="/search" method="GET">
         <label for="song">Song</label>
         <input id="song" type="text" name="song" required>
@@ -6,6 +7,7 @@
         <input type="submit" value="Search by Song">
     </form>
 
+    <!-- List song results from Spotify   -->
     <% for (let i in songs) { %>
         <form method="POST" action="/songs/new">
             <h1>SONG:
