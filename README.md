@@ -5,8 +5,8 @@
 Campus Bops is an online platform for college students to discover what songs are going viral around campus. Each school has a tier list of songs based on categories such as "Pregame Anthem", "After A Bad Breakup", and "Guilty Pleasure". By creating an account, students can search songs, using Spotify's API, and cast their votes on what songs should belong in each category. Each week, the songs in each category are placed in a NCAA tournament-style bracket. At the end of each day, the songs with the most votes moves onto the next round until one song remains and is crowned most worthy of its respective category. Its a fun and interactive place for students to discover new music and see if their chosen song can attain the top ranks of college campus hits.   
 
 ### Wireframe and ERD's
-<img width="625" alt="wireframe" src="./img/campus-bops-wireframe.png">
-<img width="625" alt="erd" src="./img/campus-bops-erd.png">
+<img width="625" alt="wireframe" src="/public/img/campus-bops-wireframe.png">
+<img width="625" alt="erd" src="/public/img/campus-bops-erd.png">
 
 ### RESTful Routes
 
