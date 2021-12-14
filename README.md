@@ -1,14 +1,14 @@
 # Campus Bops
 
-## Introduction
+##  Introduction
 
 Campus Bops is an online platform for college students to discover what songs are going viral around campus. Each school has a tier list of songs based on categories such as "Pregame Anthem", "After A Bad Breakup", and "Guilty Pleasure". By creating an account, students can search songs, using Spotify's API, and cast their votes on what songs should belong in each category. Each week, the songs in each category are placed in a NCAA tournament-style bracket. At the end of each day, the songs with the most votes moves onto the next round until one song remains and is crowned most worthy of its respective category. Its a fun and interactive place for students to discover new music and see if their chosen song can attain the top ranks of college campus hits.   
 
-### Wireframe and ERD's
+##  Wireframe and ERD's
 <img width="625" alt="wireframe" src="/public/img/campus-bops-wireframe.png">
 <img width="625" alt="erd" src="/public/img/campus-bops-erd.png">
 
-### RESTful Routes
+##  RESTful Routes
 
 | Method | Path | Location | Purpose |
 | ------ | ---------------- | -------------- | ------------------- |
@@ -42,32 +42,73 @@ Campus Bops is an online platform for college students to discover what songs ar
 | DELETE | /songs/:id | school.js | Remove Song |
 
 
-## `1` Fork & Clone Project & Install Dependencies
-`1` The first thing that we are going to do is `fork` and `clone`
+##  Code Snippets
+RESTful routes are conducted using separate controllers for each model (User, School, Category, Song). A typical route in each controller use Promises  (`then()` and `catch()`) to handle Javascript errors. Each controller has an associated Views template to render the data. 
 
-`2` Now we are going to install the current dependencies that are listed inside of `package.json`
-```text
-npm install
+###  Calling Spotify API
+To make an API call to Spotify, a Spotify Developers account must be created to obtain authorization. Once created, a unique 'CLIENT_ID' and 'CLIENT_SECRET' is given to retrieve a token from the API.   
+```js
+const axios = require('axios');
+const querystring = require('querystring');
+let buff = new Buffer.from(`${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`);
+let authKey = buff.toString('base64');
+let headers = {
+    Authorization: `Basic ${authKey}`
+}
 ```
+The GET route requests the token using the 'CLIENT_ID' and 'CLIENT_SECRET'. Once authorized, the token value is retrieved using the Axios node module. To search for song data, another GET route is executed to the address ```https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=5```. The ```${track}``` in the address is the song title searched by the user in the ```search.ejs``` file. 
+```js
+// SEARCH BY SONG
+router.get('/', function (req, res) {
+    // Make a AXIOS call (POST) to submit CLIENT_ID and CLIENT_SECRET
+    axios.post('https://accounts.spotify.com/api/token',
+        querystring.stringify({ grant_type: 'client_credentials' }),
+        {
+            headers: headers
+        })
+        .then(function (response) {
+            token = response.data.access_token
+            console.log('TOKEN', token);
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
 
-`3` We need to install some packages that will be used for `authentication`. Those are the following packages:
+            // Define song variable using value from song search bar
+            let track = req.query.song; 
 
-```text
-npm install bcrypt connect-flash passport passport-local express-session method-override
-```
--  [bcrypt](https://www.npmjs.com/package/bcrypt): A library to help you hash passwords. ( [wikipedia](https://en.wikipedia.org/wiki/Bcrypt) ) 
-    - Blowfish has a 64-bit block size and a variable key length from 32 bits up to 448 bits.
-- [connect-flash](https://github.com/jaredhanson/connect-flash): The flash is an area of the session used for storing messages that will be used to to display to the user. Flash is typically used with redirects.
-- [passport](https://www.passportjs.org/docs/): Passport is authentication middleware for Node.js. It is designed to do one thing authenticate requests. There are over 500+ strategies used to authenticate a user; however, we will be using one - *passport-local* Passport is authentication middleware for Node. It is designed to serve a singular purpose: authenticate requests
-- [passport-local](http://www.passportjs.org/packages/passport-local/): The local authentication strategy authenticates users using a username and password. The strategy requires a verify callback, which accepts these credentials and calls done providing a user. [passport-local](http://www.passportjs.org/packages/passport-local/)
-- [express-session](https://github.com/expressjs/session): Create a session middleware with given *options*.
-- [method-override](https://github.com/expressjs/method-override): Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
+            // Make another axios (GET) to retrieve song data 
+            axios.get(`https://api.spotify.com/v1/search?q=${track}&type=track&offset=0&limit=5`, config)
+                .then(response => {
+                    let items = response.data.tracks.items; // Array of songs data
+                    let songArray = []; // Array of obj containing songs data
 
-`4` Make a commit
+                    // Encapsulate each song data into an object and push into songArray
+                    for (const item of items) {
+                        let song = {};
+                        const songTitle = item.name;
+                        const artists = item.artists.map(artist => artist.name);    // Map artist array to obtain all artists in song 
+                        const albumName = item.album.name;
+                        const songPlayerId = item.id;   // For embedded player
+                        song.title = songTitle;
+                        song.artist = artists;
+                        song.album = albumName;
+                        song.songPlayerId = songPlayerId;
+                        songArray.push(song);
+                    }
+                    // Render songs into search.ejs file
+                    res.render('search', { songs: songArray });
+                })
+                .catch(err => {
+                    console.log('ERROR', err);
+                });
 
-```text
-git add .
-git commit -m "Install dependencies for project"
+        })
+        .catch(function (err) {
+            console.log("ERROR", err.message)
+        })
+});
 ```
 
 ## `2` Create Database & Update Sequelize Config
