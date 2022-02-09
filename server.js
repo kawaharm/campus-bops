@@ -57,7 +57,6 @@ app.get('/', (req, res) => {
     .catch(function (err) {
       console.log('ERROR', err);
       res.json({ message: 'Error occured, please try again....' });
-      res.json({ message: err });
     });
 })
 
