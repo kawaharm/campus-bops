@@ -1,0 +1,36 @@
+<!-- Edit Category -->
+<form method="POST" action="/categories/<%= category.id %>/?_method=PUT">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%= category.name %>">
+
+    <input type="submit">
+</form>
+
+<!-- Search for new songs -->
+<form method="GET" action="/search">
+    <input type="submit" value="Search Songs">
+</form>
+
+<!-- List songs in category -->
+<% for (let i in songs) { %>
+    <h1>SONG:
+        <%= songs[i].title; %>
+    </h1>
+    <h2>ARTIST:
+        <%= songs[i].artist; %>
+    </h2>
+    <h3>ALBUM:
+        <%= songs[i].album; %>
+    </h3>
+    <% if(songs[i].songPlayerId) { %>
+        <h4>MINI PLAYER:
+            <iframe src="https://open.spotify.com/embed/track/<%= songs[i].songPlayerId.replace(/[" ]+/g, '' ) %>"
+                width="300"
+                height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </h4>
+        <% } %>
+            <!-- Delete Song from Category -->
+            <form method="POST" action="/songs/<%= songs[i].id %>/?_method=DELETE">
+                <input type="submit" value="Remove Song from Category">
+            </form>
+            <% } %>
