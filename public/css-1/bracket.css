@@ -118,6 +118,8 @@ body {
 .round {
   display:flex;
   flex-direction: column;
+  justify-content: space-around;
+  gap: 40px;
   /* float:left;
   display: -webkit-box;
   display: -moz-box;
@@ -140,10 +142,11 @@ body {
 .matchup {
   /* margin:10px auto; */
   width: 100%;
+  /* margin: 40px auto; */
   /* padding: 60px 0; */
-  height:60px;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
+  /* height:0px; */
+  /* -webkit-transition: all 0.2s; */
+  /* transition: all 0.2s; */
 }
 
 .score {
@@ -159,8 +162,8 @@ body {
 
 .team {
   padding: 0 5px;
-  margin: 3px 0;
-  height: 25px;
+  margin: 20px 0;
+  height: 40px;
   line-height: 25px;
   white-space: nowrap;
   overflow: hidden;
