@@ -117,17 +117,15 @@ body {
 
 .round {
   display:flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 40px;
-  /* float:left;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display:flex;
-  -webkit-flex-direction:column;
-  flex-direction:column; */
+
+  /* float:left; */
+  /* display: -webkit-box; */
+  /* display: -moz-box; */
+  /* display: -ms-flexbox; */
+  /* display: -webkit-flex; */
+  /* display:flex; */
+  /* -webkit-flex-direction:column; */
+  flex-direction:column;
   width:95%;
 }
 
@@ -137,6 +135,11 @@ body {
 
 .split-two .round {
   margin: 0 0 0 2.5%;
+}
+
+.song-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .matchup {
