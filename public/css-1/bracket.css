@@ -140,6 +140,7 @@ body {
 .song-column {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .matchup {
