@@ -105,6 +105,7 @@ app.use('/categories', require('./controllers/categories'));
 app.use('/schools', require('./controllers/schools'));
 app.use('/search', require('./controllers/search'));
 app.use('/songs', require('./controllers/songs'));
+app.use('/brackets', require('./controllers/brackets'));
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
