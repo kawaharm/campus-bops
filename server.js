@@ -87,16 +87,6 @@ app.get('/profile', isLoggedIn, (req, res) => {
     })
 });
 
-app.get('/bracket', (req, res) => {
-  School.findAll()
-    .then(function (schoolList) {
-      res.render('brackets/index', { schools: schoolList })
-    })
-    .catch(function (err) {
-      console.log('ERROR', err);
-      res.json({ message: 'Error occured, please try again....' });
-    });
-})
 
 
 // CONTROLLERS

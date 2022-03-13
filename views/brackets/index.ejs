@@ -5,125 +5,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Categories</title>
+    <title>Song Bracket</title>
     <link rel="stylesheet" href="../css-1/bracket.css">
 
 </head>
 
 <body>
-    <section id="bracket">
-        <div class="details">Round 1</div>
-        <div class="container">
-            <div class="split split-one">
-                <div class="round round-one current">
-                    <div class="round-details">Round 1<br /><span class="date">January 1, 2022</span></div>
-                    <div class="song-column">
-                        <ul class="matchup">
-                            <li class="team team-top">Duke<span class="score">76</span></li>
-                            <li class="team team-bottom">Virginia<span class="score">82</span></li>
-                        </ul>
-                        <ul class="matchup">
-                            <li class="team team-top">Wake Forest<span class="score">64</span></li>
-                            <li class="team team-bottom">Clemson<span class="score">56</span></li>
-                        </ul>
-                    </div>
-                </div> <!-- END ROUND ONE -->
-
-                <div class="round round-two">
-                    <div class="song-column">
-                        <div class="round-details">Round 2<br /><span class="date">January 2, 2022</span></div>
-                        <div class="song-column">
-                            <ul class="matchup">
-                                <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                                <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> <!-- END ROUND TWO -->
-
-                <!-- <div class="round round-three">
-                    <div class="round-details">Round 3<br /><span class="date">January 3, 2022</span></div>
-                    <ul class="matchup">
-                        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                    </ul>
-                 </div> END ROUND THREE -->
-            </div>
-
-            <div class="champion">
-                <!-- <div class="semis-l">
-                    <div class="round-details">Semifinals <br /><span class="date">January 4, 2022</span></div>
-                    <div class="song-column">
-                        <ul class="matchup championship">
-                            <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                            <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                        </ul>
-                    </div>
-                </div> -->
-                <div class="final">
-                    <i class="fa fa-trophy"></i>
-                    <div class="round-details">Championship <br /><span class="date">January 5, 2022</span></div>
-                    <div class="song-column">
-                        <ul class="matchup championship">
-                            <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                            <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- <div class="semis-r">
-                    <div class="song-column">
-                        <ul class="matchup championship">
-                            <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                            <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                        </ul>
-                    </div>
-                    <div class="round-details">Semifinals <br /><span class="date">January 4, 2022</span></div>
-                </div> -->
-            </div>
-
-
-            <div class="split split-two">
-                <!-- <div class="round round-three">
-                    <div class="round-details">Round 3<br /><span class="date">January 3, 2022</span></div>
-                    <ul class="matchup">
-                        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                        <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                    </ul>
-                 </div> END ROUND THREE -->
-
-                <div class="round round-two">
-                    <div class="round-details">Round 2<br /><span class="date">January 2, 2022</span></div>
-                    <div class="song-column">
-                        <ul class="matchup">
-                            <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                            <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                        </ul>
-                    </div>
-                </div> <!-- END ROUND TWO -->
-                <div class="round round-one current">
-                    <div class="round-details">Round 1<br /><span class="date">January 1, 2022</span></div>
-                    <div class="song-column">
-                        <ul class="matchup">
-                            <li class="team team-top">Minnesota<span class="score">62</span></li>
-                            <li class="team team-bottom">Northwestern<span class="score">54</span></li>
-                        </ul>
-                        <ul class="matchup">
-                            <li class="team team-top">Michigan<span class="score">68</span></li>
-                            <li class="team team-bottom">Iowa<span class="score">66</span></li>
-                        </ul>
-                    </div>
-                </div> <!-- END ROUND ONE -->
-            </div>
+    <div class="tournament-container">
+        <div class="tournament-headers">
+            <h3>Round of 16</h3>
+            <h3>Quarter-Finals</h3>
+            <h3>Semi-Finals</h3>
+            <h3>Final</h3>
+            <h3>Winner</h3>
         </div>
-    </section>
+
+        <div class="tournament-brackets">
+            <ul class="bracket bracket-1">
+                <li class="team-item">A2 <time>14:00</time> C2</li>
+                <li class="team-item">D1 <time>20:00</time> 3BEF</li>
+                <li class="team-item">B1 <time>17:00</time> 3ACD</li>
+                <li class="team-item">F1 <time>20:00</time> E2</li>
+                <li class="team-item">C1 <time>17:00</time> 3ABF</li>
+                <li class="team-item">E1 <time>17:00</time> D2</li>
+                <li class="team-item">A1 <time>14:00</time> 3CDE</li>
+                <li class="team-item">B2 <time>20:00</time> F2</li>
+            </ul>
+            <ul class="bracket bracket-2">
+                <li class="team-item">QF1 <time>20:00</time> QF2</li>
+                <li class="team-item">QF3 <time>20:00</time> QF4</li>
+                <li class="team-item">QF5 <time>20:00</time> QF6</li>
+                <li class="team-item">QF7 <time>20:00</time> QF8</li>
+            </ul>
+            <ul class="bracket bracket-3">
+                <li class="team-item">SF1 <time>20:00</time> SF2</li>
+                <li class="team-item">SF3 <time>20:00</time> SF4</li>
+            </ul>
+            <ul class="bracket bracket-4">
+                <li class="team-item">F1 <time>20:00</time> F2</li>
+            </ul>
+
+            <ul class="bracket bracket-5">
+                <li class="team-item">European Champions</li>
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
