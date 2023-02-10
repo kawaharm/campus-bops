@@ -1,4 +1,4 @@
-/* html {
+html {
   height: 100%;
   width: 100%;
 }
@@ -7,7 +7,26 @@ body {
   font-family: sans-serif;
   margin: 0;
   height: 100%;
-} */
+}
+
+body {
+  background: white;
+}
+
+.navbar {
+  background: #144ac8;
+}
+
+.navbar-item {
+  color: ghostwhite;
+  border: 1px solid rgb(195, 221, 227);
+  border-radius: 5px;
+  padding: 2px 20px;
+  margin: 2px;
+  font-family: Helvetica;
+  font-size: 20px;
+  text-decoration: none;  /* To remove underline */
+}
 
 .tournament-container {}
 
@@ -17,16 +36,18 @@ body {
   flex-direction: row;
   justify-content: space-around;
   border-bottom: 1px solid #ccc;
-  
-  h3 {
+}
+
+.tournament-headers 
+  .h3 {
     width: 25%;
     text-align:center;
     font-weight: 400;
     border-right: 1px dashed #ccc;
     margin: 0;
     padding:1rem;
-  }
 }
+
 
 .tournament-brackets {
   display: flex;
@@ -94,56 +115,59 @@ body {
   top: 50%;
 }
 
-.bracket-2 {
-  .team-item:nth-of-type(odd):after {
-    height: 200%;
-    top: 50%;
-  }
+ .team-item:nth-of-type(odd):after {
+  height: 200%;
+  top: 50%;
+}
+
+.bracket-2 
   .team-item:nth-of-type(even):after {
     height: 200%;
     top: -150%;
-  }
 }
 
-.bracket-3 {
+
+.bracket-3 
   .team-item:nth-of-type(odd):after {
     height: 350%;
     top: 50%;
-  }
+}
+
+.bracket-3 
   .team-item:nth-of-type(even):after {
     height: 350%;
     top: -300%;
-  }
 }
 
-.bracket-4 {
+.bracket-4 
   .team-item:nth-of-type(odd):after {
     height: 700%;
     top: 50%;
-  }
+}
+
+.bracket-4 
   .team-item:nth-of-type(even):after {
     height: 700%;
     top: -650%;
-  }
 }
 
-.bracket:first-of-type {
+
+.bracket:first-of-type 
   .team-item:before {
     display: none;
-  }
 }
 
-.bracket-4 {
+
+.bracket-4 
   .team-item:after {
     display: none;
-  }
 }
 
-.bracket:last-of-type {
+
+.bracket:last-of-type 
   .team-item:before,
   .team-item:after {
     display: none;
-  }
 }
 
 .team-item time {

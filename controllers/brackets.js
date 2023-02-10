@@ -3,7 +3,8 @@ const router = express.Router();
 const {
     Category,
     School,
-    CategorySong
+    CategorySong,
+    Song
 } = require('../models');
 
 /**
@@ -17,10 +18,10 @@ const {
 
 // GET to display main bracket
 router.get('/', function (req, res) {
-    Category.findAll()
-        .then(function (categoryList) {
-            console.log('FOUND ALL CATEGORIES', categoryList);
-            res.render('brackets/index', { categories: categoryList })
+    Song.findAll()
+        .then(function (songList) {
+            console.log('FOUND ALL SONGS', songList);
+            res.render('brackets/index', { songs: songList })
         })
         .catch(function (err) {
             console.log('ERROR', err);
